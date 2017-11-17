@@ -1,0 +1,84 @@
+<h2>Register your Pet</h2>
+
+<!-- <p>First you need to log in to Spotify</p>
+<h5>Don't worry, your friends won't need to log in.</h5>
+<p>The Access code is a code that you will create to share with your friends to add to the playlist</p>
+<br>
+<h5>You will also need to have Spotify app running (this wont work on the web-app)</h5>
+<img data-ng-click="CreateViewModel.login()" data-ng-if="CreateViewModel.login_check == 0" src="assets/login.png" alt="spotifylogin">
+<br><br><br> -->
+
+<!-- Create pet -->
+<!-- <button data-ng-hide="newPet" data-ng-click="newPet = !newPet">New pet</button>
+<form data-ng-show="newPet" data-ng-submit="NewPetViewModel.create(); newPet = !newPet"> -->
+<form data-ng-submit="NewPetViewModel.create()">
+
+    <input placeholder="Email" data-ng-model="NewPetViewModel.newPet.owner_email" /><br/>
+    <input placeholder="First name" data-ng-model="NewPetViewModel.newPet.owner_firstname" /><br/>
+    <input placeholder="Last name" data-ng-model="NewPetViewModel.newPet.owner_lastname" /><br/>
+
+    <label><input type="radio" data-ng-model="NewPetViewModel.newPet.owner_school" value="Darden">Darden</label><br/>
+    <label><input type="radio" data-ng-model="NewPetViewModel.newPet.owner_school" value="UVA_Law">UVA Law</label><br/>
+    <label><input type="radio" data-ng-model="NewPetViewModel.newPet.owner_school" value="UVA_Med">UVA Med</label><br/>
+
+    <input placeholder="Phone number" data-ng-model="NewPetViewModel.newPet.owner_phone" /><br/>
+    <textarea placeholder="Address" data-ng-model="NewPetViewModel.newPet.owner_address"></textarea><br/>
+    <input placeholder="Facebook profile URL" data-ng-model="NewPetViewModel.newPet.owner_facebook" /><br/>
+    <input placeholder="LinkedIn profile URL" data-ng-model="NewPetViewModel.newPet.owner_linkedin" /><br/>
+    <input placeholder="Venmo handle" data-ng-model="NewPetViewModel.newPet.venmo" /><br/>
+
+    <input placeholder="Pet's name" data-ng-model="NewPetViewModel.newPet.name" /><br/>
+
+    <label><input type="radio" data-ng-model="NewPetViewModel.newPet.species" value="dog">Dog</label><br/>
+    <label><input type="radio" data-ng-model="NewPetViewModel.newPet.species" value="cat">Cat</label><br/>
+    <label><input type="radio" data-ng-model="NewPetViewModel.newPet.species" value="other">Other</label><br/>
+
+    <input placeholder="Breed" data-ng-model="NewPetViewModel.newPet.breed" /><br/>
+    <textarea placeholder="Description" data-ng-model="NewPetViewModel.newPet.description"></textarea><br/>
+    <input placeholder="Age" data-ng-model="NewPetViewModel.newPet.age" /><br/>
+    <input placeholder="Weight" data-ng-model="NewPetViewModel.newPet.weight" /><br/>
+
+    <label><input type="radio" data-ng-model="NewPetViewModel.newPet.shed" value="lot">Yes - a lot</label><br/>
+    <label><input type="radio" data-ng-model="NewPetViewModel.newPet.shed" value="little">Yes - a little</label><br/>
+    <label><input type="radio" data-ng-model="NewPetViewModel.newPet.shed" value="no">No</label><br/>
+
+    <label><input type="radio" data-ng-model="NewPetViewModel.newPet.housetrained" value="yes">Yes</label><br/>
+    <label><input type="radio" data-ng-model="NewPetViewModel.newPet.housetrained" value="no">No</label><br/>
+
+    <label><input type="radio" data-ng-model="NewPetViewModel.newPet.hypoallergenic" value="yes">Yes</label><br/>
+    <label><input type="radio" data-ng-model="NewPetViewModel.newPet.hypoallergenic" value="no">No</label><br/>
+
+    <input placeholder="Does your pet make noise?" data-ng-model="NewPetViewModel.newPet.noise" /><br/>
+
+    <label><input type="radio" data-ng-model="NewPetViewModel.newPet.spayed" value="yes">Yes</label><br/>
+    <label><input type="radio" data-ng-model="NewPetViewModel.newPet.spayed" value="no">No</label><br/>
+
+    <label><input type="radio" data-ng-model="NewPetViewModel.newPet.aggression" value="yes">Yes</label><br/>
+    <label><input type="radio" data-ng-model="NewPetViewModel.newPet.aggression" value="no">No</label><br/>
+
+    <label><input type="radio" data-ng-model="NewPetViewModel.newPet.otherpets" value="yes_dogs">Yes - dogs</label><br/>
+    <label><input type="radio" data-ng-model="NewPetViewModel.newPet.otherpets" value="yes_cats">Yes - cats</label><br/>
+    <label><input type="radio" data-ng-model="NewPetViewModel.newPet.otherpets" value="yes_both">Yes - both</label><br/>
+    <label><input type="radio" data-ng-model="NewPetViewModel.newPet.otherpets" value="maybe">Maybe - it depends</label><br/>
+    <label><input type="radio" data-ng-model="NewPetViewModel.newPet.otherpets" value="no">No</label><br/>
+
+    <label><input type="radio" data-ng-model="NewPetViewModel.newPet.children" value="yes">Yes</label><br/>
+    <label><input type="radio" data-ng-model="NewPetViewModel.newPet.children" value="no">No</label><br/>
+    <label><input type="radio" data-ng-model="NewPetViewModel.newPet.children" value="maybe">Maybe - it depends</label><br/>
+
+    <label><input type="radio" data-ng-model="NewPetViewModel.newPet.shots" value="yes">Yes</label><br/>
+    <label><input type="radio" data-ng-model="NewPetViewModel.newPet.shots" value="no">No</label><br/>
+
+    <label><input type="radio" data-ng-model="NewPetViewModel.newPet.specialcare" value="yes">Yes</label><br/>
+    <label><input type="radio" data-ng-model="NewPetViewModel.newPet.specialcare" value="no">No</label><br/>
+
+    <input placeholder="Veterinarian" data-ng-model="NewPetViewModel.newPet.vet_name" /><br/>
+    <input placeholder="Veterinarian's phone" data-ng-model="NewPetViewModel.newPet.vet_phone" /><br/>
+
+    <label><input type="radio" data-ng-model="NewPetViewModel.newPet.owner_insurance" value="yes">Yes</label><br/>
+    <label><input type="radio" data-ng-model="NewPetViewModel.newPet.owner_insurance" value="no">No</label><br/>
+    <label><input type="radio" data-ng-model="NewPetViewModel.newPet.owner_insurance" value="unsure">Not sure</label><br/>
+
+    <textarea placeholder="Anything else we should know" data-ng-model="NewPetViewModel.newPet.additional"></textarea><br/>
+    <button type="submit">Create</button>
+</form>

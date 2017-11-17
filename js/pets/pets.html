@@ -1,0 +1,10 @@
+<h2 class="pageHeader">Pets</h2>
+
+<a data-ui-sref="NewPet" class="btn btn-lg btn-secondary">Register your Pet</a>
+
+<br>
+<br>
+
+<div data-ng-repeat="pet in PetsViewModel.pets">
+    <p><a data-ui-sref="ShowPet({id: pet.id})">{{pet.name}}</a></p>
+</div>
