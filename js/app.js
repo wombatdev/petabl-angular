@@ -14,8 +14,48 @@
             "$stateProvider",
             "$locationProvider",
             "$urlRouterProvider",
+            "$authProvider",
             RouterFunction
         ])
+        .config (function($authProvider) {
+	          $authProvider.configure({
+                  apiUrl: 'http://localhost:3000/api',
+                  tokenValidationPath:     '/auth/validate_token',
+                  signOutUrl:              '/auth/sign_out',
+                  emailRegistrationPath:   '/auth',
+                  accountUpdatePath:       '/auth',
+                  accountDeletePath:       '/auth',
+                  confirmationSuccessUrl:  window.location.href,
+                  passwordResetPath:       '/auth/password',
+                  passwordUpdatePath:      '/auth/password',
+                  passwordResetSuccessUrl: window.location.href,
+                  emailSignInPath:         '/auth/sign_in',
+                  storage:                 'cookies',
+                  forceValidateToken:      false,
+                  validateOnPageLoad:      true,
+                  proxyIf:                 function() { return false; },
+                  proxyUrl:                '/proxy',
+                  omniauthWindowType:      'sameWindow',
+                  authProviderPaths: {
+                    github:   '/auth/github',
+                    facebook: '/auth/facebook',
+                    google:   '/auth/google'
+                  },
+                  tokenFormat: {
+                    "access-token": "{{ token }}",
+                    "token-type":   "Bearer",
+                    "client":       "{{ clientId }}",
+                    "expiry":       "{{ expiry }}",
+                    "uid":          "{{ uid }}"
+                  }
+              })
+          })
+          .run(['$rootScope', '$location', function($rootScope, $location) {
+              $rootScope.$on('auth:login-success', function() {
+                  $location.path('/');
+              });
+          }]);
+
 
         function RouterFunction($stateProvider, $locationProvider, $urlRouterProvider) {
             $locationProvider.html5Mode(true)
@@ -26,11 +66,17 @@
                     controller: "SplashController",
                     controllerAs: "SplashViewModel"
                 })
-                .state("Signin", {
+                .state("UserSessions", {
                     url: "/sign_in",
                     templateUrl: "/js/user_sessions/new.html",
-                    controller: "SigninController",
-                    controllerAs: "SigninViewModel"
+                    controller: "UserSessionsController",
+                    controllerAs: "UserSessionsViewModel"
+                })
+                .state("UserRegistrations", {
+                    url: "/test",
+                    templateUrl: "/js/user_registrations/new.html",
+                    controller: "UserRegistrationsController",
+                    controllerAs: "UserRegistrationsViewModel"
                 })
                 .state("Pets",{
                     url: "/pets",
@@ -92,6 +138,8 @@
                 // })
             $urlRouterProvider.otherwise("/")
         }
+
+
 
 // END OF IIFE
 })();
