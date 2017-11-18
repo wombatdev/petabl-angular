@@ -3,3 +3,9 @@
 <a data-ui-sref="Pets" class="btn btn-lg btn-secondary">Pets</a>
 
 <a data-ui-sref="Sitters" class="btn btn-lg btn-secondary">Sitters</a>
+
+<br>
+<br>
+
+<li data-ng-show="!user.id"><a data-ui-sref="Signin">Sign in</a></li>
+<li data-ng-show="user.id"><a data-ng-click='signOut()'>Sign out</a></li>
