@@ -22,7 +22,7 @@
                 .then(function(resp) {
                     console.log("auth success");
                     vm.user = resp;
-                    alert('Welcome ', vm.user.email, '!');
+                    // alert('Welcome ', vm.user.email, '!');
                     // $state.go("Splash", {id: vm.user.id});
             })
                 .catch(function(resp) {

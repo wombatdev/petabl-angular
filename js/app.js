@@ -5,6 +5,7 @@
             "ui.router",
             "ngResource",
             "ng-token-auth",
+            "ipCookie",
             // "Devise",
             // "templates",
             "ngAnimate"
@@ -47,12 +48,35 @@
                     "client":       "{{ clientId }}",
                     "expiry":       "{{ expiry }}",
                     "uid":          "{{ uid }}"
+                  },
+                  cookieOps: {
+                    path: "/",
+                    expires: 9999,
+                    expirationUnit: 'days',
+                    secure: false,
+                    domain: 'http://localhost:3000/api'
+                  },
+                  createPopup: function(url) {
+                    return window.open(url, '_blank', 'closebuttoncaption=Cancel');
+                  },
+                  parseExpiry: function(headers) {
+                    // convert from UTC ruby (seconds) to UTC js (milliseconds)
+                    return (parseInt(headers['expiry']) * 1000) || null;
+                  },
+                  handleLoginResponse: function(response) {
+                    return response.data;
+                  },
+                  handleAccountUpdateResponse: function(response) {
+                    return response.data;
+                  },
+                  handleTokenValidationResponse: function(response) {
+                    return response.data;
                   }
               })
           })
           .run(['$rootScope', '$location', function($rootScope, $location) {
               $rootScope.$on('auth:login-success', function() {
-                  $location.path('/');
+                  $location.path('/splash');
               });
           }]);
 
@@ -73,7 +97,7 @@
                     controllerAs: "UserSessionsViewModel"
                 })
                 .state("UserRegistrations", {
-                    url: "/test",
+                    url: "/sign_up",
                     templateUrl: "/js/user_registrations/new.html",
                     controller: "UserRegistrationsController",
                     controllerAs: "UserRegistrationsViewModel"
@@ -83,6 +107,11 @@
                     templateUrl: "/js/pets/pets.html",
                     controller: "PetsController",
                     controllerAs: "PetsViewModel"
+                    // resolve: {
+                    //     auth: function($auth) {
+                    //         return $auth.validateUser();
+                    //     }
+                    // }
                 })
                 .state("ShowPet",{
                     url: "/pets/:id",
