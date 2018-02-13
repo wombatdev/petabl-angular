@@ -14,7 +14,23 @@
 </head>
 
 <body>
+
+
     <section class="angularPage" data-ui-view>
+        <h2 class="pageHeader">Splash</h2>
+
+        <a data-ui-sref="Pets" class="btn btn-lg btn-secondary">Pets</a>
+
+        <a data-ui-sref="Sitters" class="btn btn-lg btn-secondary">Sitters</a>
+
+        <br>
+        <br>
+
+        <li data-ng-show="!user.id"><a data-ui-sref="UserRegistrations">Sign up</a></li>
+        <li data-ng-show="!user.id"><a data-ui-sref="UserSessions">Sign in</a></li>
+        <li data-ng-show="user.id"><a data-ng-click="signOut()">Sign out</a></li>
+
+
     </section>
 
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
@@ -23,8 +39,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.1/angular-ui-router.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.7/angular-resource.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.7/angular-animate.min.js"></script>
-    <!-- <script src="/bower_components/angular-cookies/angular-cookies.js"></script> -->
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-cookie/4.1.0/angular-cookie.js"></script> -->
+    <!-- <script src="/bower_components/angular-cookies/angular-cookies.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-cookie/4.1.0/angular-cookie.js"></script> -->
     <script src="/bower_components/angular-cookie/angular-cookie.js"></script>
     <script src="/bower_components/ng-token-auth/dist/ng-token-auth.js"></script>
     <!-- <script src="bower_components/AngularDevise/lib/devise-min.js"></script> -->

@@ -3,13 +3,10 @@
 (function() {
     angular.module ("petabl", [
             "ui.router",
+            "ngAnimate",
             "ngResource",
-            "ng-token-auth",
             "ipCookie",
-            // "Devise",
-            // "templates",
-            "ngAnimate"
-            // "meals"
+            "ng-token-auth"
         ])
         .config ([
             "$stateProvider",
@@ -54,7 +51,7 @@
                     expires: 9999,
                     expirationUnit: 'days',
                     secure: false,
-                    domain: 'http://localhost:3000/api'
+                    domain: 'http://localhost:8080'
                   },
                   createPopup: function(url) {
                     return window.open(url, '_blank', 'closebuttoncaption=Cancel');
@@ -81,7 +78,7 @@
           }]);
 
 
-        function RouterFunction($stateProvider, $locationProvider, $urlRouterProvider) {
+        function RouterFunction($stateProvider, $locationProvider, $urlRouterProvider, $auth) {
             $locationProvider.html5Mode(true)
             $stateProvider
                 .state("Splash", {
@@ -107,11 +104,11 @@
                     templateUrl: "/js/pets/pets.html",
                     controller: "PetsController",
                     controllerAs: "PetsViewModel"
-                    // resolve: {
-                    //     auth: function($auth) {
-                    //         return $auth.validateUser();
-                    //     }
-                    // }
+                                // resolve: {
+                                //     auth: function($auth) {
+                                //         return $auth.validateUser();
+                                //     }
+                                // }
                 })
                 .state("ShowPet",{
                     url: "/pets/:id",
