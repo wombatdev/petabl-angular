@@ -10,3 +10,16 @@
 <li data-ng-show="!user.id"><a data-ui-sref="UserRegistrations">Sign up</a></li>
 <li data-ng-show="!user.id"><a data-ui-sref="UserSessions">Sign in</a></li>
 <li data-ng-show="user.id"><a data-ng-click="signOut()">Sign out</a></li>
+
+<br>
+<br>
+
+<li data-ng-show="user.id"><a data-ui-sref="Sitters.NewSitter">Become a sitter</a></li>
+
+<button data-ng-click="SplashViewModel.validate()" class="btn btn-primary btn-lg">
+  Validate user
+</button>
+
+<button data-ng-click="SplashViewModel.cookieCheck()" class="btn btn-primary btn-lg">
+  Check cookies
+</button>

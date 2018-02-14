@@ -1,6 +1,15 @@
 "use strict";
 
 (function() {
+
+    angular.module('myModule', ['ng-token-auth'])
+        .run(['$authProvider', function ($authProvider) {
+            Auth.currentUser().then(function(user) {
+                console.log(user);
+                console.log(Auth._currentUser);
+            });
+        }]);
+
     angular.module ("petabl", [
             "ui.router",
             "ngAnimate",
@@ -28,7 +37,7 @@
                   passwordUpdatePath:      '/auth/password',
                   passwordResetSuccessUrl: window.location.href,
                   emailSignInPath:         '/auth/sign_in',
-                  storage:                 'cookies',
+                  storage:                 'sessionStorage',
                   forceValidateToken:      false,
                   validateOnPageLoad:      true,
                   proxyIf:                 function() { return false; },
@@ -51,7 +60,7 @@
                     expires: 9999,
                     expirationUnit: 'days',
                     secure: false,
-                    domain: 'http://localhost:8080'
+                    domain: 'http://localhost:3000/api'
                   },
                   createPopup: function(url) {
                     return window.open(url, '_blank', 'closebuttoncaption=Cancel');
@@ -122,24 +131,31 @@
                     controller: "NewPetController",
                     controllerAs: "NewPetViewModel"
                 })
+                // .state("Sitters",{
+                //     url: "/sitters",
+                //     templateUrl: "/js/sitters/sitters.html",
+                //     controller: "SittersController",
+                //     controllerAs: "SittersViewModel"
+                // })
                 .state("Sitters",{
                     url: "/sitters",
                     templateUrl: "/js/sitters/sitters.html",
+                    abstract: true,
                     controller: "SittersController",
-                    controllerAs: "SittersViewModel"
+                    controllerAs: "SittersViewModel",
+                    resolve: {
+                        auth: function($auth) {
+                            return $auth.validateUser();
+                        }
+                    }
                 })
-                .state("ShowSitter",{
-                    url: "/sitters/:id",
-                    templateUrl: "/js/pets/showsitter.html",
-                    controller: "ShowSitterController",
-                    controllerAs: "ShowSitterViewModel"
-                })
-                .state("NewSitter",{
+                .state("Sitters.NewSitter",{
                     url: "/newsitter",
-                    templateUrl: "/js/sitters/newsitter.html",
+                    templateUrl: "/js/pets/newsitter.html",
                     controller: "NewSitterController",
                     controllerAs: "NewSitterViewModel"
                 })
+
                 // .state("Signin",{
                 //     url:"/signin",
                 //     templateUrl:"/js/chefs/signin.html",
