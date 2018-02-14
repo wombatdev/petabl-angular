@@ -5,45 +5,32 @@
     angular
         .module("petabl")
         .controller("SplashController", [
-            "$scope",
+            "$state",
             "$auth",
             "ipCookie",
             "$rootScope",
             SplashControllerFunction
         ])
 
-    function SplashControllerFunction($scope, $auth, ipCookie, $rootScope) {
+    function SplashControllerFunction($state, $auth, ipCookie, $rootScope) {
         console.log("I'm in the splash controller!");
 
         var vm = this;
-        vm.user = $scope.user;
-        console.log(vm.user.id);
+        var user = vm.user;
+        // vm.user = $scope.user;
+        // console.log(vm.user.id);
 
-        $rootScope.$on('auth:logout-success', function(ev) {
-            alert('logout success');
-        });
-        $rootScope.$on('auth:validation-success', function(ev) {
-            alert('validation success');
-        });
-        $rootScope.$on('auth:login-success', function(ev) {
-            alert('login success');
-        });
-        $rootScope.$on('auth:invalid', function(ev) {
-            alert('invalid');
-        });
-        $scope.$on('auth:session-expired', function(ev) {
-            alert('Session has expired');
-        });
+
 
         vm.validate = function () {
-            if (vm.user.id) {
-                console.log("signed in");
-            };
+            // if (vm.user.id) {
+            //     console.log("signed in");
+            // };
             console.log("click");
-            $auth.validateUser()
-                .then(function(resp) {
-                    console.log(resp);
-                });
+            $auth.validateUser().catch(function(err){
+                console.info('not authenticated', err);
+                $state.go('UserSessions');
+            });
         };
 
         vm.cookieCheck = function () {

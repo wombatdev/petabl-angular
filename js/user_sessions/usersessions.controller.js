@@ -13,7 +13,7 @@
             UserSessionsControllerFunction
         ])
 
-    function UserSessionsControllerFunction($scope, $state, $rootScope, $auth) {
+    function UserSessionsControllerFunction($scope, $state, $rootScope, $auth, ipCookie) {
         console.log("I'm in the user sessions controller!")
         var vm = this;
 
@@ -24,6 +24,7 @@
                     console.log("auth success");
                     console.log(resp);
                     console.log($auth.validateUser());
+                    console.log(ipCookie());
             })
                 .catch(function(resp) {
                     console.log("auth failure");

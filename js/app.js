@@ -37,7 +37,7 @@
                   passwordUpdatePath:      '/auth/password',
                   passwordResetSuccessUrl: window.location.href,
                   emailSignInPath:         '/auth/sign_in',
-                  storage:                 'sessionStorage',
+                  storage:                 'cookies',
                   forceValidateToken:      false,
                   validateOnPageLoad:      true,
                   proxyIf:                 function() { return false; },
@@ -59,8 +59,8 @@
                     path: "/",
                     expires: 9999,
                     expirationUnit: 'days',
-                    secure: false,
-                    domain: 'http://localhost:3000/api'
+                    secure: false
+                    // domain: 'http://localhost:3000/api'
                   },
                   createPopup: function(url) {
                     return window.open(url, '_blank', 'closebuttoncaption=Cancel');
@@ -83,6 +83,21 @@
           .run(['$rootScope', '$location', function($rootScope, $location) {
               $rootScope.$on('auth:login-success', function() {
                   $location.path('/splash');
+              });
+              $rootScope.$on('auth:logout-success', function(ev) {
+                  alert('logout success');
+              });
+              $rootScope.$on('auth:validation-success', function(ev) {
+                  alert('validation success');
+              });
+              $rootScope.$on('auth:login-success', function(ev) {
+                  alert('login success');
+              });
+              $rootScope.$on('auth:invalid', function(ev) {
+                  alert('invalid');
+              });
+              $rootScope.$on('auth:session-expired', function(ev) {
+                  alert('Session has expired');
               });
           }]);
 
