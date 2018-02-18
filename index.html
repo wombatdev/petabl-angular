@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html data-ng-app="petabl">
+<html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -13,25 +13,25 @@
     <base href="/" />
 </head>
 
-<body>
+<body data-ng-app="petabl">
 
 
-    <section class="angularPage" data-ui-view>
-        <h2 class="pageHeader">Splash</h2>
+    <div class="angularPage container">
+        <div data-ui-view>
+            <h2 class="pageHeader">Splash</h2>
 
-        <a data-ui-sref="Pets" class="btn btn-lg btn-secondary">Pets</a>
+            <a data-ui-sref="Pets" class="btn btn-lg btn-secondary">Pets</a>
 
-        <a data-ui-sref="Sitters" class="btn btn-lg btn-secondary">Sitters</a>
+            <a data-ui-sref="Sitters" class="btn btn-lg btn-secondary">Sitters</a>
 
-        <br>
-        <br>
+            <br>
+            <br>
 
-        <li data-ng-show="!user.id"><a data-ui-sref="UserRegistrations">Sign up</a></li>
-        <li data-ng-show="!user.id"><a data-ui-sref="UserSessions">Sign in</a></li>
-        <li data-ng-show="user.id"><a data-ng-click="signOut()">Sign out</a></li>
-
-
-    </section>
+            <li data-ng-show="!user.id"><a data-ui-sref="UserRegistrations">Sign up</a></li>
+            <li data-ng-show="!user.id"><a data-ui-sref="UserSessions">Sign in</a></li>
+            <li data-ng-show="user.id"><a data-ng-click="signOut()">Sign out</a></li>
+        </div>
+    </div>
 
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script> -->
@@ -49,14 +49,16 @@
     <script src="/js/user_sessions/user.factory.js"></script>
     <script src="/js/user_sessions/usersessions.controller.js"></script>
     <script src="/js/user_registrations/userregistrations.controller.js"></script>
+    <script src="/js/sitters/sitter.factory.js"></script>
+    <script src="/js/sitters/newsitter.controller.js"></script>
+    <script src="/js/sitters/sitterservices.controller.js"></script>
+    <script src="/js/services/visit.factory.js"></script>
+    <script src="/js/services/newvisit.controller.js"></script>
     <script src="/js/pets/pet.factory.js"></script>
     <script src="/js/pets/pets.controller.js"></script>
     <script src="/js/pets/showpet.controller.js"></script>
     <script src="/js/pets/newpet.controller.js"></script>
-    <script src="/js/sitters/sitter.factory.js"></script>
-    <script src="/js/sitters/sitters.controller.js"></script>
-    <script src="/js/sitters/showsitter.controller.js"></script>
-    <script src="/js/sitters/newsitter.controller.js"></script>
+    <!-- <script src="/js/sitters/showsitter.controller.js"></script> -->
 
 </body>
 

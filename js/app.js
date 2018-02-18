@@ -2,14 +2,6 @@
 
 (function() {
 
-    angular.module('myModule', ['ng-token-auth'])
-        .run(['$authProvider', function ($authProvider) {
-            Auth.currentUser().then(function(user) {
-                console.log(user);
-                console.log(Auth._currentUser);
-            });
-        }]);
-
     angular.module ("petabl", [
             "ui.router",
             "ngAnimate",
@@ -82,7 +74,8 @@
           })
           .run(['$rootScope', '$location', function($rootScope, $location) {
               $rootScope.$on('auth:login-success', function() {
-                  $location.path('/splash');
+                  alert('login success');
+                  $location.path('/');
               });
               $rootScope.$on('auth:logout-success', function(ev) {
                   alert('logout success');
@@ -90,11 +83,9 @@
               $rootScope.$on('auth:validation-success', function(ev) {
                   alert('validation success');
               });
-              $rootScope.$on('auth:login-success', function(ev) {
-                  alert('login success');
-              });
               $rootScope.$on('auth:invalid', function(ev) {
-                  alert('invalid');
+                  alert('You have to log in first!');
+                  $location.path('/sign_in');
               });
               $rootScope.$on('auth:session-expired', function(ev) {
                   alert('Session has expired');
@@ -123,16 +114,50 @@
                     controller: "UserRegistrationsController",
                     controllerAs: "UserRegistrationsViewModel"
                 })
+                .state("Sitters",{
+                    templateUrl: "/js/sitters/sitters.html",
+                    abstract: true,
+                    resolve: {
+                        auth: function($auth) {
+                            return $auth.validateUser();
+                        }
+                    }
+                })
+                .state("Sitters.NewSitter",{
+                    url: "/newsitter",
+                    templateUrl: "/js/sitters/newsitter.html",
+                    controller: "NewSitterController",
+                    controllerAs: "NewSitterViewModel",
+                    parent: "Sitters"
+                })
+                .state("Sitters.SitterServices",{
+                    url: "/sitterservices",
+                    templateUrl: "/js/sitters/sitterservices.html",
+                    controller: "SitterServicesController",
+                    controllerAs: "SitterServicesViewModel",
+                    parent: "Sitters"
+                })
+                .state("Services",{
+                    templateUrl: "/js/services/services.html",
+                    abstract: true,
+                    resolve: {
+                        auth: function($auth) {
+                            return $auth.validateUser();
+                        }
+                    }
+                })
+                .state("Services.NewVisit",{
+                    url: "/newvisit",
+                    templateUrl: "/js/services/newvisit.html",
+                    controller: "NewVisitController",
+                    controllerAs: "NewVisitViewModel",
+                    parent: "Services"
+                })
                 .state("Pets",{
                     url: "/pets",
                     templateUrl: "/js/pets/pets.html",
                     controller: "PetsController",
                     controllerAs: "PetsViewModel"
-                                // resolve: {
-                                //     auth: function($auth) {
-                                //         return $auth.validateUser();
-                                //     }
-                                // }
                 })
                 .state("ShowPet",{
                     url: "/pets/:id",
@@ -146,53 +171,7 @@
                     controller: "NewPetController",
                     controllerAs: "NewPetViewModel"
                 })
-                // .state("Sitters",{
-                //     url: "/sitters",
-                //     templateUrl: "/js/sitters/sitters.html",
-                //     controller: "SittersController",
-                //     controllerAs: "SittersViewModel"
-                // })
-                .state("Sitters",{
-                    url: "/sitters",
-                    templateUrl: "/js/sitters/sitters.html",
-                    abstract: true,
-                    controller: "SittersController",
-                    controllerAs: "SittersViewModel",
-                    resolve: {
-                        auth: function($auth) {
-                            return $auth.validateUser();
-                        }
-                    }
-                })
-                .state("Sitters.NewSitter",{
-                    url: "/newsitter",
-                    templateUrl: "/js/pets/newsitter.html",
-                    controller: "NewSitterController",
-                    controllerAs: "NewSitterViewModel"
-                })
 
-                // .state("Signin",{
-                //     url:"/signin",
-                //     templateUrl:"/js/chefs/signin.html",
-                //     controller: "SigninController",
-                //     controllerAs: "SigninViewModel",
-                //     onEnter: function(Auth, $state){
-                //         Auth.currentUser().then(function(){
-                //             $state.go('Home')
-                //         })
-                //     }
-                // })
-                // .state("Signup",{
-                //     url:"/signup",
-                //     templateUrl:"/js/chefs/signup.html",
-                //     controller: "SigninController",
-                //     controllerAs: "SigninViewModel",
-                //     onEnter: function(Auth, $state){
-                //         Auth.currentUser().then(function(){
-                //             $state.go('Home')
-                //         })
-                //     }
-                // })
             $urlRouterProvider.otherwise("/")
         }
 

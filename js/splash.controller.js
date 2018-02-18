@@ -12,25 +12,22 @@
             SplashControllerFunction
         ])
 
-    function SplashControllerFunction($state, $auth, ipCookie, $rootScope) {
+    function SplashControllerFunction($state, $auth, ipCookie, $scope) {
         console.log("I'm in the splash controller!");
 
         var vm = this;
         var user = vm.user;
-        // vm.user = $scope.user;
-        // console.log(vm.user.id);
-
+        vm.user = $scope.user;
+        console.log(vm.user.id);
 
 
         vm.validate = function () {
-            // if (vm.user.id) {
-            //     console.log("signed in");
-            // };
             console.log("click");
             $auth.validateUser().catch(function(err){
                 console.info('not authenticated', err);
                 $state.go('UserSessions');
             });
+            console.log("end");
         };
 
         vm.cookieCheck = function () {

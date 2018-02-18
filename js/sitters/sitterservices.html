@@ -1,0 +1,15 @@
+<h2 class="pageHeader">Sitter Services</h2>
+<p>OK, moving on. What services will you provide?</p>
+
+<main data-ng-controller="SitterServicesController as vm">
+<form data-ng-submit="SitterServicesViewModel.selection(hosting, sitting, visits, walking)" role="form">
+
+    <label><input type="checkbox" data-ng-model="hosting" />Hosting</label>
+    <label><input type="checkbox" data-ng-model="sitting" />Sitting</label>
+    <label><input type="checkbox" data-ng-model="visits" />Visits</label>
+    <label><input type="checkbox" data-ng-model="walking" />Walking</label>
+
+<button type="submit" class="btn btn-primary btn-lg">Submit</button>
+</form>
+
+</main>
