@@ -74,19 +74,19 @@
           })
           .run(['$rootScope', '$location', function($rootScope, $location) {
               $rootScope.$on('auth:login-success', function() {
-                  alert('login success');
+                  $rootScope.$broadcast('userLoggedIn');
                   $location.path('/');
               });
               $rootScope.$on('auth:logout-success', function(ev) {
-                  alert('logout success');
+                  $rootScope.$broadcast('userLoggedIn');
               });
               $rootScope.$on('auth:validation-success', function(ev) {
-                  alert('validation success');
+                  $rootScope.$broadcast('userLoggedIn');
               });
-            //   $rootScope.$on('auth:invalid', function(ev) {
-            //     //   alert('You have to log in first!');
-            //     //   $location.path('/sign_in');
-            //   });
+              $rootScope.$on('auth:invalid', function(ev) {
+                  console.log('Not signed in.');
+                //   $location.path('/sign_in');
+              });
               $rootScope.$on('auth:session-expired', function(ev) {
                   alert('Session has expired');
               });
