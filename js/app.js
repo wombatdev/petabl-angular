@@ -83,10 +83,10 @@
               $rootScope.$on('auth:validation-success', function(ev) {
                   alert('validation success');
               });
-              $rootScope.$on('auth:invalid', function(ev) {
-                  alert('You have to log in first!');
-                  $location.path('/sign_in');
-              });
+            //   $rootScope.$on('auth:invalid', function(ev) {
+            //     //   alert('You have to log in first!');
+            //     //   $location.path('/sign_in');
+            //   });
               $rootScope.$on('auth:session-expired', function(ev) {
                   alert('Session has expired');
               });

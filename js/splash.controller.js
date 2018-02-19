@@ -44,15 +44,26 @@
         };
 
 
-        vm.validate = function () {
-            console.log("click");
-            $auth.validateUser().catch(function(err){
-                console.info('not authenticated', err);
-                $state.go('UserSessions');
-            });
-            console.log(vm.user.id);
-            console.log("end");
-        };
+        // vm.validate = function () {
+        //     console.log("click");
+            $auth.validateUser()
+                .then(function(resp) {
+                    SitterFactory.getUser({user_id: $scope.user.id}).$promise.then(function(response) {
+                        vm.sitter = response;
+                        console.log(vm.sitter);
+                        return vm.sitter;
+                    })
+                    .catch(function(err){
+                        console.info('not a sitter', err);
+                    });
+                })
+                .catch(function(err){
+                    console.info('not authenticated', err);
+                    // $state.go('UserSessions');
+                });
+        //     console.log(vm.user.id);
+        //     console.log("end");
+        // };
 
         vm.cookieCheck = function () {
             vm.cookies = ipCookie();
