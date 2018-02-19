@@ -123,20 +123,25 @@
                         }
                     }
                 })
-                .state("Sitters.NewSitter",{
-                    url: "/newsitter",
-                    templateUrl: "/js/sitters/newsitter.html",
-                    controller: "NewSitterController",
-                    controllerAs: "NewSitterViewModel",
-                    parent: "Sitters"
-                })
-                .state("Sitters.SitterServices",{
-                    url: "/sitterservices",
-                    templateUrl: "/js/sitters/sitterservices.html",
-                    controller: "SitterServicesController",
-                    controllerAs: "SitterServicesViewModel",
-                    parent: "Sitters"
-                })
+                    .state("Sitters.NewSitter",{
+                        url: "/newsitter",
+                        templateUrl: "/js/sitters/newsitter.html",
+                        controller: "NewSitterController",
+                        controllerAs: "NewSitterViewModel",
+                        parent: "Sitters"
+                    })
+                        .state("Sitters.NewSitter.profile",{
+                            url: "/profile",
+                            templateUrl: "/js/sitters/newsitter-profile.html",
+                        })
+                        .state("Sitters.NewSitter.services",{
+                            url: "/services",
+                            templateUrl: "/js/sitters/newsitter-services.html",
+                        })
+                        .state("Sitters.NewSitter.servicedetails",{
+                            url: "/details",
+                            templateUrl: "/js/sitters/newsitter-servicedetails.html",
+                        })
                 .state("Services",{
                     templateUrl: "/js/services/services.html",
                     abstract: true,
