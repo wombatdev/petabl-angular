@@ -9,16 +9,39 @@
             "$auth",
             "ipCookie",
             "$rootScope",
+            "SitterFactory",
             SplashControllerFunction
         ])
 
-    function SplashControllerFunction($state, $auth, ipCookie, $scope) {
+    function SplashControllerFunction($state, $auth, ipCookie, $scope, SitterFactory) {
         console.log("I'm in the splash controller!");
 
         var vm = this;
-        var user = vm.user;
         vm.user = $scope.user;
+
         console.log(vm.user.id);
+
+        // SitterFactory.getUser({user_id: vm.user.id}).$promise.then(function(response) {
+        //     vm.sitter = response;
+        //     console.log(vm.sitter);
+        //     return vm.sitter;
+        // })
+        // .catch(function(err){
+        //     console.info('not a sitter', err);
+        // });
+
+        vm.sitterCheck = function () {
+            console.log(vm.user.id);
+            // vm.sitters = SitterFactory.query();
+            SitterFactory.getUser({user_id: vm.user.id}).$promise.then(function(response) {
+                vm.sitter = response;
+                console.log(vm.sitter);
+                return vm.sitter;
+            })
+            .catch(function(err){
+                console.info('not a sitter', err);
+            });
+        };
 
 
         vm.validate = function () {
@@ -27,6 +50,7 @@
                 console.info('not authenticated', err);
                 $state.go('UserSessions');
             });
+            console.log(vm.user.id);
             console.log("end");
         };
 
@@ -34,6 +58,8 @@
             vm.cookies = ipCookie();
             console.log(vm.cookies);
         };
+
+
 
         // $auth.validateUser();
 

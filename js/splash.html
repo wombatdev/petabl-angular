@@ -1,8 +1,8 @@
 <h2 class="pageHeader">Splash</h2>
 
-<a data-ui-sref="Pets" class="btn btn-lg btn-secondary">Pets</a>
+<!-- <a data-ui-sref="Pets" class="btn btn-lg btn-secondary">Pets</a>
 
-<a data-ui-sref="Sitters" class="btn btn-lg btn-secondary">Sitters</a>
+<a data-ui-sref="Sitters" class="btn btn-lg btn-secondary">Sitters</a> -->
 
 <br>
 <br>
@@ -16,10 +16,14 @@
 
 <li><a data-ui-sref="Sitters.NewSitter">Become a sitter</a></li>
 
+<button data-ng-click="SplashViewModel.sitterCheck()" class="btn btn-primary btn-lg">
+  Sitter check
+</button>
+
 <button data-ng-click="SplashViewModel.validate()" class="btn btn-primary btn-lg">
   Validate user
 </button>
 
-<button data-ng-click="SplashViewModel.cookieCheck()" class="btn btn-primary btn-lg">
+<!-- <button data-ng-click="SplashViewModel.cookieCheck()" class="btn btn-primary btn-lg">
   Check cookies
-</button>
+</button> -->
