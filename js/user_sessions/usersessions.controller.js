@@ -23,8 +23,8 @@
                 .then(function(resp) {
                     console.log("auth success");
                     console.log(resp);
-                    console.log($auth.validateUser());
-                    console.log(ipCookie());
+                    // console.log($auth.validateUser());
+                    // console.log(ipCookie());
             })
                 .catch(function(resp) {
                     console.log("auth failure");
