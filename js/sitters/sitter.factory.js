@@ -14,7 +14,7 @@
       get: {method: "GET", isArray: false, params: {user_id: '@user_id'}},
       update: {method: "PUT"},
       query: {method: "GET", isArray: true},
-      getUser: {url: "http://localhost:3000/sitters/:id/:user_id", method: "GET", params: {id: "@id", user_id: "@user_id"}}
+      getUser: {url: "http://localhost:3000/sitters/:id.json", method: "GET", isArray: true, params: {id: "@id", user_id: "@user_id"}}
     })
   }
 

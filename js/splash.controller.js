@@ -17,8 +17,8 @@
         console.log("I'm in the splash controller!");
 
         var vm = this;
-        vm.user = $scope.user;
-        console.log(vm.user.id);
+
+        
 
 
     }

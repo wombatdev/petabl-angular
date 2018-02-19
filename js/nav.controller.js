@@ -20,14 +20,15 @@
             vm.sitter = {};
             $auth.validateUser()
                 .then(function(resp) {
-                    SitterFactory.getUser({user_id: $rootScope.user.id}).$promise.then(function(response) {
-                        vm.sitter = response;
+                    vm.sitters = SitterFactory.query().$promise.then(function(response) {
+                        vm.sitter = response.filter(function( obj ) {
+                            return obj.user_id == $rootScope.user.id;
+                        });
                         console.log(vm.sitter);
-                        return vm.sitter;
+                        return vm.sitter? vm.sitter[0] : null;
                     })
                     .catch(function(err){
-                        console.log($rootScope.user);
-                        console.info('not a sitter', err);
+                        console.info('query failed', err);
                     });
                 })
                 .catch(function(err){
