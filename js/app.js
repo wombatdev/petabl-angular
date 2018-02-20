@@ -72,6 +72,35 @@
                   }
               })
           })
+
+            //filter name searchFilter
+            .filter('searchFilter',[function(){
+                /** @data is the original data**/
+                /** @visits is the search query for visits**/
+                /** @walking is the search query for walking**/
+                return function (data,visits,walking) {
+                    var output = []; // store result in this
+                    console.log(data);
+                    console.log(visits, walking);
+                    //loop over the original array
+                    for (var i = 0; i<data.length; i++) {
+                        console.log(data[i]);
+                        // check if any result matching the search request
+                        if (data[i].does_visits == visits || data[i].does_walking == walking) {
+                            console.log(i, " match");
+                            //push data into results array
+                            output.push(data[i]);
+                        } else {
+                            /**@case no query is present**/
+                            console.log(i, " no match");
+                        }
+                    }
+                    console.log(output);
+                    return output; // finally return the result
+                }
+            }])
+
+
           .run(['$rootScope', '$location', function($rootScope, $location) {
               $rootScope.$on('auth:login-success', function() {
                   $rootScope.$broadcast('userLoggedIn');
@@ -142,6 +171,28 @@
                             url: "/details",
                             templateUrl: "/js/sitters/newsitter-servicedetails.html",
                         })
+                .state("Search",{
+                    url: "/search",
+                    templateUrl: "/js/search.html",
+                    controller: "SearchController",
+                    controllerAs: "SearchViewModel",
+                    params: {
+                        "visits": null,
+                        "walking": null,
+                        "location": null,
+                        "startDate": null,
+                        "endDate": null
+                    }
+                })
+                .state("ShowSitter",{
+                    url: "/sitters/:id",
+                    templateUrl: "/js/sitters/showsitter.html",
+                    controller: "ShowSitterController",
+                    controllerAs: "ShowSitterViewModel",
+                    params: {
+                        "id": null
+                    }
+                })
                 .state("Services",{
                     templateUrl: "/js/services/services.html",
                     abstract: true,
