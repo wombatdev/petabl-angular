@@ -1,17 +1,45 @@
-<h2>Register your Pet</h2>
 
-<!-- <p>First you need to log in to Spotify</p>
-<h5>Don't worry, your friends won't need to log in.</h5>
-<p>The Access code is a code that you will create to share with your friends to add to the playlist</p>
-<br>
-<h5>You will also need to have Spotify app running (this wont work on the web-app)</h5>
-<img data-ng-click="CreateViewModel.login()" data-ng-if="CreateViewModel.login_check == 0" src="assets/login.png" alt="spotifylogin">
-<br><br><br> -->
+<div class="row">
+<div class="col-sm-8 col-sm-offset-2">
 
-<!-- Create pet -->
-<!-- <button data-ng-hide="newPet" data-ng-click="newPet = !newPet">New pet</button>
+  <!-- <div id="form-container" data-ng-controller="NewSitterController as vm"> -->
+  <div id="form-container">
+
+      <div class="page-header text-center">
+          <h2>Add Pet</h2>
+
+          <!-- the links to our nested states using relative paths -->
+          <!-- add the active class if the state matches our ui-sref -->
+          <div id="status-buttons" class="text-center">
+              <a data-ui-sref-active="active" data-ui-sref=".profile"><span>1</span> Profile</a>
+              <a data-ui-sref-active="active" data-ui-sref=".profile2"><span>2</span> More Info</a>
+              <a data-ui-sref-active="active" data-ui-sref=".profile3"><span>3</span> Care Instructions</a>
+          </div>
+      </div>
+
+      <!-- use ng-submit to catch the form submission and use our Angular function -->
+      <form id="signup-form" data-ng-submit="processForm(formData)">
+          <!-- our nested state views will be injected here -->
+          <div id="form-views" data-ui-view></div>
+      </form>
+
+  </div>
+
+  <!-- show our formData as it is being typed -->
+  <pre>
+    {{ formData }}
+  </pre>
+
+</div>
+</div>
+
+
+<!-- <h2>Register your Pet</h2>
+
+Create pet
+<button data-ng-hide="newPet" data-ng-click="newPet = !newPet">New pet</button>
 <form data-ng-show="newPet" data-ng-submit="NewPetViewModel.create(); newPet = !newPet"> -->
-<form data-ng-submit="NewPetViewModel.create()">
+<!-- <form data-ng-submit="NewPetViewModel.create()">
 
     <input placeholder="Email" data-ng-model="NewPetViewModel.newPet.owner_email" /><br/>
     <input placeholder="First name" data-ng-model="NewPetViewModel.newPet.owner_firstname" /><br/>
@@ -81,4 +109,4 @@
 
     <textarea placeholder="Anything else we should know" data-ng-model="NewPetViewModel.newPet.additional"></textarea><br/>
     <button type="submit">Create</button>
-</form>
+</form> -->

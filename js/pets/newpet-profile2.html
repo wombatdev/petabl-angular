@@ -1,0 +1,41 @@
+
+
+<label>What services will you provide?</label>
+<div class="form-group">
+    <div class="checkbox">
+        <label>
+           <input type="checkbox" data-ng-init="formData.visits = false" data-ng-model="formData.visits">
+           Visits
+        </label>
+    </div>
+    <div class="checkbox">
+        <label>
+           <input type="checkbox" data-ng-init="formData.hosting = false" data-ng-model="formData.hosting" value="false">
+           Hosting
+        </label>
+    </div>
+    <div class="checkbox">
+        <label>
+            <input type="checkbox" data-ng-init="formData.sitting = false" data-ng-model="formData.sitting" value="false">
+            Sitting
+        </label>
+    </div>
+    <div class="checkbox">
+        <label>
+            <input type="checkbox" data-ng-init="formData.walking = false" data-ng-model="formData.walking">
+            Walking
+        </label>
+    </div>
+</div>
+
+
+
+
+
+<div class="form-group row">
+<div class="col-xs-6 col-xs-offset-3">
+    <a data-ui-sref="Sitters.NewSitter.servicedetails" class="btn btn-block btn-info">
+    Next Section <span class="glyphicon glyphicon-circle-arrow-right"></span>
+    </a>
+</div>
+</div>
