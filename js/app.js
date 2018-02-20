@@ -142,6 +142,19 @@
                             url: "/details",
                             templateUrl: "/js/sitters/newsitter-servicedetails.html",
                         })
+                .state("Search",{
+                    url: "/search",
+                    templateUrl: "/js/search.html",
+                    controller: "SearchController",
+                    controllerAs: "SearchViewModel",
+                    params: {
+                        "visits": null,
+                        "walking": null,
+                        "location": null,
+                        "startDate": null,
+                        "endDate": null
+                    }
+                })
                 .state("Services",{
                     templateUrl: "/js/services/services.html",
                     abstract: true,

@@ -4,17 +4,21 @@
 (function() {
     angular
         .module("petabl")
-        .controller("SplashController", [
+        .controller("SearchController", [
             "$state",
             "$stateParams",
             "$scope",
-            SplashControllerFunction
+            "SitterFactory",
+            SearchControllerFunction
         ])
 
-    function SplashControllerFunction($state, $stateParams, $scope) {
-        console.log("I'm in the splash controller!");
+    function SearchControllerFunction($state, $stateParams, $scope, SitterFactory) {
+        console.log("I'm in the search controller!");
         var vm = this;
-        $scope.searchData = {};
+        $scope.params = $stateParams;
+        console.log($scope.params.visits);
+        vm.allSitters = SitterFactory.query();
+        // console.log(vm.allSitters);
 
         $scope.processForm = function (searchData) {
             console.log(searchData);
