@@ -82,9 +82,6 @@
                     var output = []; // store result in this
                     console.log(data);
                     console.log(visits, walking);
-
-
-
                     //loop over the original array
                     for (var i = 0; i<data.length; i++) {
                         console.log(data[i]);
@@ -185,6 +182,15 @@
                         "location": null,
                         "startDate": null,
                         "endDate": null
+                    }
+                })
+                .state("ShowSitter",{
+                    url: "/sitters/:id",
+                    templateUrl: "/js/sitters/showsitter.html",
+                    controller: "ShowSitterController",
+                    controllerAs: "ShowSitterViewModel",
+                    params: {
+                        "id": null
                     }
                 })
                 .state("Services",{

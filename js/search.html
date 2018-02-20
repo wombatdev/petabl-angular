@@ -47,7 +47,7 @@
 
 <!-- <div data-ng-repeat="sitter in SearchViewModel.allSitters | filter: {does_visits: params.visits}"> -->
 <div data-ng-repeat="sitter in SearchViewModel.sitters">
-    <p>{{ sitter.firstname }}</p>
+    <a data-ui-sref="ShowSitter({id: sitter.id})">{{ sitter.firstname }}</a>
     <!-- <div>{{ sitter | filter:{'does_visits': vm.params.visits, 'does_walking': vm.params.walking})[0].value }}</div> -->
     <!-- <div>{{ sitter.firstname | filter:{'does_visits': true} }}</div> -->
 </div>
