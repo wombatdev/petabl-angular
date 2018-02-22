@@ -1,0 +1,70 @@
+
+
+<fieldset class="form-group">
+    <label>Does your pet get along well with other dogs?</label>
+    <div class="form-check">
+      <label class="form-check-label">
+        <input type="radio" class="form-check-input" name="otherdogs" value="true" data-ng-model="formData.otherdogs">
+        Yes
+      </label>
+    </div>
+    <div class="form-check">
+    <label class="form-check-label">
+        <input type="radio" class="form-check-input" name="otherdogs" value="false" data-ng-model="formData.otherdogs">
+        No
+      </label>
+    </div>
+</fieldset>
+
+<div class="form-group">
+    <input type="text" class="form-control" name="otherdogs_info" placeholder="Additional details, if need" data-ng-model="formData.otherdogs_info">
+</div>
+
+<fieldset class="form-group">
+    <label>Does your pet get along well with cats?</label>
+    <div class="form-check">
+      <label class="form-check-label">
+        <input type="radio" class="form-check-input" name="othercats" value="true" data-ng-model="formData.othercats">
+        Yes
+      </label>
+    </div>
+    <div class="form-check">
+    <label class="form-check-label">
+        <input type="radio" class="form-check-input" name="othercats" value="false" data-ng-model="formData.othercats">
+        No
+      </label>
+    </div>
+</fieldset>
+
+<div class="form-group">
+    <input type="text" class="form-control" name="othercats_info" placeholder="Additional details, if need" data-ng-model="formData.othercats_info">
+</div>
+
+<fieldset class="form-group">
+    <label>Does your pet get along well with children?</label>
+    <div class="form-check">
+      <label class="form-check-label">
+        <input type="radio" class="form-check-input" name="children" value="true" data-ng-model="formData.children">
+        Yes
+      </label>
+    </div>
+    <div class="form-check">
+    <label class="form-check-label">
+        <input type="radio" class="form-check-input" name="children" value="false" data-ng-model="formData.children">
+        No
+      </label>
+    </div>
+</fieldset>
+
+<div class="form-group">
+    <input type="text" class="form-control" name="children_info" placeholder="Additional details, if need" data-ng-model="formData.children_info">
+</div>
+
+
+<div class="form-group row">
+<div class="col-xs-6 col-xs-offset-3">
+    <a data-ui-sref="NewPet.profile3" class="btn btn-block btn-info">
+    Next Section <span class="glyphicon glyphicon-circle-arrow-right"></span>
+    </a>
+</div>
+</div>

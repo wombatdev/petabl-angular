@@ -193,6 +193,25 @@
                         "id": null
                     }
                 })
+                .state("NewPet",{
+                    url: "/newpet",
+                    templateUrl: "/js/pets/newpet.html",
+                    controller: "NewPetController",
+                    controllerAs: "NewPetViewModel"
+                })
+                    .state("NewPet.profile",{
+                        url: "/profile",
+                        templateUrl: "/js/pets/newpet-profile.html",
+                    })
+                    .state("NewPet.profile2",{
+                        url: "/profile2",
+                        templateUrl: "/js/pets/newpet-profile2.html",
+                    })
+                    .state("NewPet.profile3",{
+                        url: "/profile3",
+                        templateUrl: "/js/pets/newpet-profile3.html",
+                    })
+
                 .state("Services",{
                     templateUrl: "/js/services/services.html",
                     abstract: true,
@@ -221,12 +240,7 @@
                     controller: "ShowPetController",
                     controllerAs: "ShowPetViewModel"
                 })
-                .state("NewPet",{
-                    url: "/newpet",
-                    templateUrl: "/js/pets/newpet.html",
-                    controller: "NewPetController",
-                    controllerAs: "NewPetViewModel"
-                })
+
 
             $urlRouterProvider.otherwise("/")
         }
