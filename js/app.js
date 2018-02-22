@@ -211,6 +211,15 @@
                         url: "/profile3",
                         templateUrl: "/js/pets/newpet-profile3.html",
                     })
+                .state("Profile", {
+                    url: "/profile",
+                    templateUrl: "/js/profile/profile.html",
+                    controller: "ProfileController",
+                    controllerAs: "ProfileViewModel",
+                    params: {
+                        "id": null
+                    }
+                })
 
                 .state("Services",{
                     templateUrl: "/js/services/services.html",
