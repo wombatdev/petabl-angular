@@ -5,6 +5,7 @@
         <li data-ng-show="!user.id"><a data-ui-sref="UserRegistrations">Register</a></li>
         <li data-ng-show="!user.id"><a data-ui-sref="UserSessions">Sign In</a></li>
         <li data-ng-show="!vm.sitter[0].id"><a data-ui-sref="Sitters.NewSitter.profile">Become a Sitter</a></li>
+        <li data-ng-show="user.id"><a data-ui-sref="Profile">My Profile</a></li>
         <li data-ng-show="user.id"><a data-ng-click="signOut()">Sign Out</a></li>
     </ul>
 </div>
