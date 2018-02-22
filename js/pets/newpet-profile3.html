@@ -1,26 +1,101 @@
+
+<fieldset class="form-group">
+    <label>Does your pet shed?</label>
+    <div class="form-check">
+      <label class="form-check-label">
+        <input type="radio" class="form-check-input" name="shed" value="true" data-ng-model="formData.shed">
+        Yes
+      </label>
+    </div>
+    <div class="form-check">
+    <label class="form-check-label">
+        <input type="radio" class="form-check-input" name="shed" value="false" data-ng-model="formData.shed">
+        No
+      </label>
+    </div>
+</fieldset>
+
 <div class="form-group">
-    <label for="max_distance">Max distance you'll travel?</label>
-    <input type="number" class="form-control" name="max_distance" data-ng-model="formData.max_distance">
+    <input type="text" class="form-control" name="shed_info" placeholder="Additional details, if need" data-ng-model="formData.shed_info">
+</div>
+
+<fieldset class="form-group">
+    <label>Is your pet hypoallergenic?</label>
+    <div class="form-check">
+      <label class="form-check-label">
+        <input type="radio" class="form-check-input" name="hypoallergenic" value="true" data-ng-model="formData.hypoallergenic">
+        Yes
+      </label>
+    </div>
+    <div class="form-check">
+    <label class="form-check-label">
+        <input type="radio" class="form-check-input" name="hypoallergenic" value="false" data-ng-model="formData.hypoallergenic">
+        No
+      </label>
+    </div>
+</fieldset>
+
+<div class="form-group">
+    <input type="text" class="form-control" name="hypoallergenic_info" placeholder="Additional details, if need" data-ng-model="formData.hypoallergenic_info">
+</div>
+
+<fieldset class="form-group">
+    <label>Does your pet made considerable noise?</label>
+    <div class="form-check">
+      <label class="form-check-label">
+        <input type="radio" class="form-check-input" name="noise" value="true" data-ng-model="formData.noise">
+        Yes
+      </label>
+    </div>
+    <div class="form-check">
+    <label class="form-check-label">
+        <input type="radio" class="form-check-input" name="noise" value="false" data-ng-model="formData.noise">
+        No
+      </label>
+    </div>
+</fieldset>
+
+<div class="form-group">
+    <input type="text" class="form-control" name="noise_info" placeholder="Additional details, if need" data-ng-model="formData.noise_info">
+</div>
+
+<fieldset class="form-group">
+    <label>Does your pet have a history of aggression?</label>
+    <div class="form-check">
+      <label class="form-check-label">
+        <input type="radio" class="form-check-input" name="aggression" value="true" data-ng-model="formData.aggression">
+        Yes
+      </label>
+    </div>
+    <div class="form-check">
+    <label class="form-check-label">
+        <input type="radio" class="form-check-input" name="aggression" value="false" data-ng-model="formData.aggression">
+        No
+      </label>
+    </div>
+</fieldset>
+
+<div class="form-group">
+    <input type="text" class="form-control" name="aggression_info" placeholder="Additional details, if need" data-ng-model="formData.aggression_info">
 </div>
 
 <div class="form-group">
-    <label for="visit_rate">What is your visit rate?</label>
-    <input type="number" class="form-control" name="visit_rate" data-ng-model="formData.visit_rate">
+    <label for="specialcare">Does your pet have any special care requirements?</label>
+    <input type="text" class="form-control" name="specialcare" data-ng-model="formData.specialcare">
 </div>
 
 <div class="form-group">
-    <label for="visit_max">How many visits per day?</label>
-    <input type="number" class="form-control" name="visit_max" data-ng-model="formData.visit_max">
+    <label for="vet">Veterinary name and contact info</label>
+    <textarea class="form-control" rows="2" name="vet" data-ng-model="formData.vet"></textarea>
 </div>
 
 <div class="form-group">
-    <label for="walking_rate">What is your walking rate?</label>
-    <input type="number" class="form-control" name="walking_rate" data-ng-model="formData.walking_rate">
+    <label for="about">About your pet (enjoys long walks on the beach, peanut butter, etc.)</label>
+    <textarea class="form-control" rows="3" name="about" data-ng-model="formData.about"></textarea>
 </div>
-
 <div class="form-group">
-    <label for="walking_max">How many walks per day?</label>
-    <input type="number" class="form-control" name="walking_max" data-ng-model="formData.walking_max">
+    <label for="instructions">Care instructions</label>
+    <textarea class="form-control" rows="5" name="instructions" data-ng-model="formData.instructions"></textarea>
 </div>
 
 <div class="text-center">
