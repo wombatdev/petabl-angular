@@ -9,49 +9,49 @@
 <input type="text" data-ng-model="zipcode" placeholder="Zip code" />
 <input type="text" data-ng-model="phone1" placeholder="Phone number" /> -->
 
-<div class="form-group">
+<div class="form-group" data-ng-controller="NewSitterController as vm">
     <label for="firstname">First name</label>
-    <input type="text" class="form-control" name="firstname" data-ng-model="formData.firstname">
+    <input type="text" class="form-control" name="firstname" data-ng-model="userData.firstname">
 </div>
 
 <div class="form-group">
     <label for="lastname">Last name</label>
-    <input type="text" class="form-control" name="lastname" data-ng-model="formData.lastname">
+    <input type="text" class="form-control" name="lastname" data-ng-model="userData.lastname">
 </div>
 
 <div class="form-group">
     <label for="address1">Address 1</label>
-    <input type="text" class="form-control" name="address1" data-ng-model="formData.address1">
+    <input type="text" class="form-control" name="address1" data-ng-model="userData.address1">
 </div>
 
 <div class="form-group">
     <label for="address2">Address 2</label>
-    <input type="text" class="form-control" name="address2" data-ng-model="formData.address2">
+    <input type="text" class="form-control" name="address2" data-ng-model="userData.address2">
 </div>
 
 <div class="form-group">
     <label for="city">City</label>
-    <input type="text" class="form-control" name="city" data-ng-model="formData.city">
+    <input type="text" class="form-control" name="city" data-ng-model="userData.city">
 </div>
 
 <div class="form-group">
     <label for="state">State</label>
-    <input type="text" class="form-control" name="state" data-ng-model="formData.state">
+    <input type="text" class="form-control" name="state" data-ng-model="userData.state">
 </div>
 
 <div class="form-group">
     <label for="zipcode">Zip code</label>
-    <input type="text" class="form-control" name="zipcode" data-ng-model="formData.zipcode">
+    <input type="text" class="form-control" name="zipcode" data-ng-model="userData.zipcode">
 </div>
 
 <div class="form-group">
     <label for="phone1">Phone number</label>
-    <input type="text" class="form-control" name="phone1" data-ng-model="formData.phone1">
+    <input type="text" class="form-control" name="phone1" data-ng-model="userData.phone1">
 </div>
 
 <div class="form-group row">
 <div class="col-xs-6 col-xs-offset-3">
-    <a data-ui-sref="Sitters.NewSitter.services" class="btn btn-block btn-info">
+    <a data-ui-sref="Sitters.NewSitter.services" class="btn btn-block btn-info" data-ng-click="profileUpdate(userData)">
     Next Section <span class="glyphicon glyphicon-circle-arrow-right"></span>
     </a>
 </div>

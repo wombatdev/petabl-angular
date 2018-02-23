@@ -9,36 +9,54 @@
             "$state",
             "$stateParams",
             "$scope",
+            "$auth",
             NewSitterControllerFunction
         ])
 
-        function NewSitterControllerFunction (SitterFactory, $state, $stateParams, $scope) {
+        function NewSitterControllerFunction (SitterFactory, $state, $stateParams, $scope, $auth) {
             console.log("I'm in the new sitter controller!")
             var vm = this;
             // var user = $scope.user;
             vm.user = $scope.user;
-            vm.userid = $scope.user.id;
-            console.log(vm.user.id);
+            console.log(vm.user.firstname);
             $scope.formData = {};
+            $scope.userData = {
+                "firstname": vm.user.firstname,
+                "lastname": vm.user.lastname,
+                "address1": vm.user.address1,
+                "address2": vm.user.address2,
+                "city": vm.user.city,
+                "state": vm.user.state,
+                "zipcode": vm.user.zipcode,
+                "phone1": vm.user.phone1
+            };
+
+            $scope.profileUpdate = function (profileData) {
+                console.log(profileData);
+                $auth.updateAccount(profileData).then(function(resp) {
+                    console.log("update successful");
+                })
+                .catch(function(resp) {
+                    console.log("update failed", resp);
+                });
+            };
 
 
             vm.sitters = SitterFactory.query();
-            // vm.new_sitter = new SitterFactory();
-
 
             $scope.processForm = function (formData) {
                 console.log(formData);
                 console.log(vm.user.id);
                 vm.new_sitter = new SitterFactory();
                 vm.new_sitter.user_id = vm.user.id;
-                vm.new_sitter.firstname = formData.firstname;
-                vm.new_sitter.lastname = formData.lastname;
-                vm.new_sitter.address1 = formData.address1;
-                vm.new_sitter.address2 = formData.address2;
-                vm.new_sitter.city = formData.city;
-                vm.new_sitter.state = formData.state;
-                vm.new_sitter.zipcode = formData.zipcode;
-                vm.new_sitter.phone1 = formData.phone1;
+                vm.new_sitter.firstname = vm.user.firstname;
+                vm.new_sitter.lastname = vm.user.lastname;
+                vm.new_sitter.address1 = vm.user.address1;
+                vm.new_sitter.address2 = vm.user.address2;
+                vm.new_sitter.city = vm.user.city;
+                vm.new_sitter.state = vm.user.state;
+                vm.new_sitter.zipcode = vm.user.zipcode;
+                vm.new_sitter.phone1 = vm.user.phone1;
 
                 vm.new_sitter.max_distance = formData.max_distance;
                 vm.new_sitter.does_visits = formData.visits;
